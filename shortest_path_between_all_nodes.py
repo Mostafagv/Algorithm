@@ -59,10 +59,10 @@ def shortest_path(graph: list) -> int:
 
 
 if __name__ == "__main__":
-    # print('test 1 - pick_options', pick_option([1,2,3], [1,2,3,4]) == 4)
-    # print('test 2 - pick_options', pick_option([1, 2, 3], [4]) == 4)
-    # print('test 3 - pick_options', pick_option([1, 2, 3], [2, 3]) == 3)
-    # print('test 4 - pick_options', pick_option([1, 2, 3], [1]) == 1)
+    print('test 1 - pick_options', pick_option([1,2,3], [1,2,3,4]) == 4)
+    print('test 2 - pick_options', pick_option([1, 2, 3], [4]) == 4)
+    print('test 3 - pick_options', pick_option([1, 2, 3], [2, 3]) == 3)
+    print('test 4 - pick_options', pick_option([1, 2, 3], [1]) == 1)
 
     print('test 1: ',shortest_path([[1,2,3],[0],[0],[0]])==4)
     print('test 2: ', shortest_path([[1],[0,2,4],[1,3,4],[2],[1,2]]) == 4)
