@@ -20,7 +20,7 @@ W = 50
 # W = 50
 
 
-def knapsack(weight, value, W):
+def knapsack(weight: list, value: list, W: int) -> float:
     def helper(w, v, remain_w, reward):
         if len(w) == 1:
             return reward+v[0] if w[0] <= remain_w else reward
