@@ -1,2 +1,2 @@
 # Algorithm
-My Repo for Algo Practice
+My Repo for Algorithm Practice
