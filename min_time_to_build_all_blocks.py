@@ -53,22 +53,22 @@ def min_build(blocks, cost):
     # ==================
     t = 0
     c1 = helper(count_workers, blocks, 0, cost)
-    print('-' * 10, 'result')
+    # print('-' * 10, 'result')
     # initial build
-    print(c1)
+    # print(c1)
     return c1
 
 
 def helper(count_workers_, blocks_, time_, cost_):
-    print('-' * 10 + '\n', "worker: {}, block: {}, time: {}, cost:{}".format(count_workers_, blocks_, time_, cost_))
+    # print('-' * 10 + '\n', "worker: {}, block: {}, time: {}, cost:{}".format(count_workers_, blocks_, time_, cost_))
     if len(blocks_) == 0:
-        print('condition 1',time_)
+        # print('condition 1',time_)
         return time_
     if count_workers_ >= len(blocks_):
-        print('condition 2',time_ + blocks_[-1])
+        # print('condition 2',time_ + blocks_[-1])
         return time_ + blocks_[-1]
     if count_workers_ == 0 and len(blocks_) > 0:
-        print('condition 3', 'inf')
+        # print('condition 3', 'inf')
         return float('inf')
 
     cost = float('inf')
@@ -90,12 +90,12 @@ def helper(count_workers_, blocks_, time_, cost_):
                                         cost_
                                         )
                            )
-    print(cost)
+    # print(cost)
     return cost
 
 
 if __name__ == "__main__":
-    # print('test 1: ', min_build([1], 1) == 1)
-    # print('test 2: ', min_build([1, 2], 5) == 7)
-    # print('test 3: ', min_build([1, 2, 3], 1) == 4)
-    print('test 3: ', min_build([1, 2, 3], 5) == 12)
+    print('test 1: ', min_build([1], 1) == 1)
+    print('test 2: ', min_build([1, 2], 5) == 7)
+    print('test 3: ', min_build([1, 2, 3], 1) == 4)
+    print('test 4: ', min_build([1, 2, 3], 5) == 12)
