@@ -51,54 +51,51 @@ def min_build(blocks, cost):
     # ==================
     # step 1
     # ==================
-    step = 0
-    c1 = helper(count_workers + 1, blocks, step + 1)
-    c2 = helper(count_workers - 1, blocks[:-1], step + 1) + blocks[-1]
-    # print('-' * 10, 'result')
-    # print(c1, c2)
-    critical_path = min(c1, c2)
-    extra_split = max(critical_path - len(blocks), 0)
-    critical_path = critical_path - extra_split + extra_split * cost
-
-    return critical_path
+    t = 0
+    c1 = helper(count_workers, blocks, 0, cost)
+    print('-' * 10, 'result')
+    # initial build
+    print(c1)
+    return c1
 
 
-def helper(count_workers_, blocks_, step_):
-    # print('-' * 10 + '\n', count_workers_, blocks_, step_)
+def helper(count_workers_, blocks_, time_, cost_):
+    print('-' * 10 + '\n', "worker: {}, block: {}, time: {}, cost:{}".format(count_workers_, blocks_, time_, cost_))
     if len(blocks_) == 0:
-        # print(0)
-        return 0 + step_ - 1
+        print('condition 1',time_)
+        return time_
     if count_workers_ >= len(blocks_):
-        # print(step_ + blocks_[-1])
-        return step_ + blocks_[-1]
+        print('condition 2',time_ + blocks_[-1])
+        return time_ + blocks_[-1]
     if count_workers_ == 0 and len(blocks_) > 0:
-        # print('inf')
+        print('condition 3', 'inf')
         return float('inf')
 
     cost = float('inf')
 
     for _split_ in range(count_workers_ + 1):
-        if -count_workers_ + _split_ < 0:
+        if count_workers_ != _split_:
             cost = max(min(cost, helper(_split_ * 2,
                                         blocks_[:-count_workers_ + _split_],
-                                        step_ + 1
+                                        time_+cost_,
+                                        cost_
                                         )
-                           ),
-                       step_ + blocks_[-1]
+                           )
+                       , time_+blocks_[-1]
                        )
         else:
-            cost = max(min(cost, helper(_split_ * 2,
-                                        [],
-                                        step_ + 1
+            cost = min(cost, helper(_split_ * 2,
+                                        blocks_,
+                                        time_+ cost_,
+                                        cost_
                                         )
-                           ),
-                       step_ + blocks_[-1]
-                       )
-    # print(cost)
+                           )
+    print(cost)
     return cost
 
 
 if __name__ == "__main__":
-    print('test 1: ', min_build([1], 1) == 1)
-    print('test 2: ', min_build([1, 2], 5) == 7)
-    print('test 3: ', min_build([1, 2, 3], 1) == 4)
+    # print('test 1: ', min_build([1], 1) == 1)
+    # print('test 2: ', min_build([1, 2], 5) == 7)
+    # print('test 3: ', min_build([1, 2, 3], 1) == 4)
+    print('test 3: ', min_build([1, 2, 3], 5) == 12)
