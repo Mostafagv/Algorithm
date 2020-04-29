@@ -25,6 +25,7 @@ Explanation: There are three ways to climb to the top.
 
 """
 
+
 def climbing_stairs(n:int) -> int:
     x = [0 for i in range(n+1)]
     x[0]=1
@@ -35,6 +36,8 @@ def climbing_stairs(n:int) -> int:
             x[i + 2] = x[i + 2] + x[i]
 
     return x[-1]
+
+
 if __name__ == "__main__":
     print(climbing_stairs(3) == 3)
     print(climbing_stairs(2) == 2)
