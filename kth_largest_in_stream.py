@@ -22,12 +22,11 @@ class KthLargest:
 if __name__ == '__main__':
     ins = KthLargest([4, 5, 8, 2], 3)
 
-    print(ins.add(3)==4)
-    print(ins.add(5)==5)
-    print(ins.add(10)==5)
-    print(ins.add(9)==8)
-    print(ins.add(4)==8)
-
+    print(ins.add(3) == 4)
+    print(ins.add(5) == 5)
+    print(ins.add(10) == 5)
+    print(ins.add(9) == 8)
+    print(ins.add(4) == 8)
 
     ins = KthLargest([], 1)
     print(ins.add(-3) == -3)
