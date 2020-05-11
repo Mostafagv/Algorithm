@@ -1,5 +1,20 @@
 """
 https://leetcode.com/problems/longest-palindromic-substring/
+
+
+mat[i][j] = 1 if i==j
+if j = i+1:
+    mat[i][j] = 1*(s[i]==s[j])
+
+if j=i+2:
+    s[i] == s[j] and mat[i+1][j-1] == 1
+
+if j= i+3:
+    s[i] == s[j] and mat[i+1][j-1] == 1
+
+for gap in range(0,len(s)):
+    for i in range(0,len(s)-gap)):
+        mat[i][i+gap] = 1*(s[i] == s[j] and mat[i+1][j-1] == 1)
 """
 
 
